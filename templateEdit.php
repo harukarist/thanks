@@ -44,7 +44,7 @@ if(!empty($_POST)){
     if($stmt){
       // トグル出力
       $_SESSION['msg_success'] = SUC05;
-      header("Location:templeteEdit.php");
+      header("Location:templateEdit.php");
       exit();
     }
 

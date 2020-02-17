@@ -32,7 +32,7 @@
             <li><a href="cardCreate.php"><i class="fas fa-paint-brush"></i><span class="text">カードを贈る</span></a></li>
             <li><a href="cardList.php"><i class="fas fa-inbox"></i><span class="text">カード一覧</span></a></li>
             <li><a href="memberList.php"><i class="fas fa-user-friends"></i><span class="text">メンバーリスト</span></a></li>
-            <?php if(!empty($_SESSION['is_admin'])) echo'<li><a href="templeteEdit.php"><i class="fas fa-cog"></i><span class="text">管理</span></a></li>' ?>
+            <?php if(!empty($_SESSION['is_admin'])) echo'<li><a href="templateEdit.php"><i class="fas fa-cog"></i><span class="text">管理</span></a></li>' ?>
 
             <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i><span class="text">ログアウト</span></a></li>
 

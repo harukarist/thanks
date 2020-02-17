@@ -24,13 +24,13 @@ $is_edit = (empty($dbFormData)) ? false : true;
 $dbUsersList = getOtherUsers($_SESSION['user_id']);
 
 // DBからテンプレートデータを取得
-$dbTemplete = getTemplete();
+$dbTemplate = getTemplate();
 
 // デバッグ出力
 debug('メッセージID：'.$m_id);
 debug('$dbFormData：'.print_r($dbFormData,true));
 debug('$dbUsersList：'.print_r($dbUsersList,true));
-debug('$dbTemplete：'.print_r($dbTemplete,true));
+debug('$dbTemplate：'.print_r($dbTemplate,true));
 
 // パラメータ改ざんチェック
 //================================
@@ -196,8 +196,8 @@ require('head.php');
                 <input type="radio" name="card_id" value="0" <?php if(getFormData('card_id') == 0 ){ echo 'checked'; } ?>>
               </div>
               <?php
-              if(!empty($dbTemplete)):
-                foreach($dbTemplete as $key => $val):
+              if(!empty($dbTemplate)):
+                foreach($dbTemplate as $key => $val):
               ?>
               <div class="card">
                 <img src="<?php echo showImg(sanitize($val['card_pic'])); ?>" alt="<?php echo sanitize($val['name']); ?>">

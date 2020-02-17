@@ -370,8 +370,8 @@ function getUsersPass($u_id){
 
 //================================
 // カードテンプレート情報取得
-function getTemplete($c_id = ''){
-  debug('getTemplete()');
+function getTemplate($c_id = ''){
+  debug('getTemplate()');
   //例外処理
   try {
     // DBへ接続
