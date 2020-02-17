@@ -14,15 +14,15 @@ require('auth.php');
 //================================
 // GETパラメータを取得
 //----------------------------------
-debug('★GETパラメータ：'.print_r($_GET,true));
+debug('GETパラメータ：'.print_r($_GET,true));
 // グループのGETパラメータを取得(セレクトボックスで指定)
 $group = (!empty($_GET['group_id'])) ? $_GET['group_id'] : '';
 
 // DBからデータを取得
 $dbMembers = getUsersList($group);
 $dbGroups = getGroups();
-debug('★$dbMembers：'.print_r($dbMembers,true));
-debug('★$dbGroups：'.print_r($dbGroups,true));
+debug('$dbMembers：'.print_r($dbMembers,true));
+debug('$dbGroups：'.print_r($dbGroups,true));
 
 debug(basename($_SERVER['PHP_SELF']).'画面表示処理終了 <<<<<<<<<<');
 ?>

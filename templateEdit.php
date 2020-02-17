@@ -19,7 +19,7 @@ if(!empty($_POST)){
   //変数にPOST情報を代入
   $temp_pic = $_POST['temp_pic'];
   $name = $_POST['name'];
-  debug('★$temp_pic：'.$temp_pic);
+  debug('$temp_pic：'.$temp_pic);
 
   if(!empty($_FILES['card_pic']['name']) ) {
     //POST画像を一時アップロードし、パスを格納
@@ -28,7 +28,7 @@ if(!empty($_POST)){
     // 一時保存した画像のパスがあれば格納
     $pic = (!empty($temp_pic) ) ? $temp_pic : '';
   }
-  debug('★$pic：'.$pic);
+  debug('$pic：'.$pic);
 
   //例外処理
   try {

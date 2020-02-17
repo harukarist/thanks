@@ -26,7 +26,7 @@ $currentMinNum = (($currentPageNum-1)*$listSpan);
 $dbUsersData = getUsersHistory($currentMinNum, $listSpan, $_SESSION['user_id']);
 
 // デバッグ出力
-debug('★$dbUsersData：'.print_r($dbUsersData,true));
+debug('$dbUsersData：'.print_r($dbUsersData,true));
 
 
 debug(basename($_SERVER['PHP_SELF']).'画面表示処理終了 <<<<<<<<<<');

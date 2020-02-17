@@ -180,8 +180,8 @@ function validPass($str, $key){
 }
 // selectboxチェック
 function validSelect($str, $key){
-  debug('★$str'.$str);
-  debug('★$key'.$key);
+  debug('$str'.$str);
+  debug('$key'.$key);
   if(!preg_match("/^[0-9]+$/", $str)){
     global $err_msg;
     $err_msg[$key] = MSG13;
@@ -498,7 +498,7 @@ function getConversations($u_id, $p_id, $span = 20,$currentMinNum = 0, $is_asc =
     if($stmt){
       // クエリ結果のデータを全レコード格納
       $rst['data'] = $stmt->fetchAll();
-      debug('★$rst：'.print_r($rst,true));
+      debug('$rst：'.print_r($rst,true));
       // クエリ結果の全データを返却
       return $rst;
     }else{
@@ -600,7 +600,7 @@ function getMessageList($u_id, $span = 20, $currentMinNum = 0, $category, $is_as
     if($stmt){
       // クエリ結果のデータを全レコード格納
       $rst['data'] = $stmt->fetchAll();
-      debug('★$rst：'.print_r($rst,true));
+      debug('$rst：'.print_r($rst,true));
       // クエリ結果の全データを返却
       return $rst;
     }else{
@@ -636,7 +636,7 @@ function getAmount($u_id){
     $rst['sent'] = $stmt->rowCount();
 
     if($stmt){
-      debug('★$rst：'.print_r($rst,true));
+      debug('$rst：'.print_r($rst,true));
       return $rst;
     }else{
       return false;
@@ -680,7 +680,7 @@ function getUsersHistory($currentMinNum = 0, $span = 20, $u_id){
     if($stmt){
       // クエリ結果のデータを全レコード格納
       $rst['data'] = $stmt->fetchAll();
-      debug('★$rst：'.print_r($rst,true));
+      debug('$rst：'.print_r($rst,true));
       // クエリ結果の全データを返却
       return $rst;
     }else{
@@ -832,10 +832,10 @@ function sendMail($from, $to, $subject, $comment){
         //送信結果を判定
         if ($result) {
           debug('メールを送信しました。');
-          debug('★from：'.$from);
-          debug('★to：'.$to);
-          debug('★subject：'.$subject);
-          debug('★comment：'.$comment);
+          debug('from：'.$from);
+          debug('to：'.$to);
+          debug('subject：'.$subject);
+          debug('comment：'.$comment);
         } else {
           debug('【エラー発生】メールの送信に失敗しました。');
         }
@@ -862,18 +862,18 @@ function getFormData($str, $flg = false){
   global $err_msg;
   global $pic;
   
-  // debug('★getFormData()$str：'.print_r($str,true));
+  // debug('getFormData()$str：'.print_r($str,true));
   if($flg){
     $method = $_GET;
-    // debug('★GET情報を$methodに入れる');
+    // debug('GET情報を$methodに入れる');
   }else{
     $method = $_POST;
-    // debug('★POST情報を$methodに入れる');
+    // debug('POST情報を$methodに入れる');
   }
   // debug('getFormData()$method：'.print_r($method,true));
 
   if($str == 'pic' && !empty($pic)){
-    // debug('★$picを返す：'.$pic);
+    // debug('$picを返す：'.$pic);
     return sanitize($pic);
   }else{
     // DBにユーザーデータがある場合
@@ -956,7 +956,7 @@ function uploadImg($file, $key){
       // exif_imagetype関数は「IMAGETYPE_GIF」「IMAGETYPE_JPEG」などの定数を返す
       // 必ず手前に@を付けてエラーを無視
       $type = @exif_imagetype($file['tmp_name']);
-      debug('★画像の$type：'.print_r($type,true));
+      debug('画像の$type：'.print_r($type,true));
       // in_arrayでMIMEタイプに値が含まれているかをチェック
       // 第三引数にはtrueを設定して厳密にチェック
       if (!in_array($type, [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)) {
@@ -1023,7 +1023,7 @@ function pagination( $currentPageNum, $totalPageNum, $pageColNum = 5){
   if(!empty($_GET)){
     // p以外のパラメータを付与
     $link = appendGetParam(array('p'), true);
-    debug('★$link:'.$link);
+    debug('$link:'.$link);
   }else{
     $link = '';
   }
@@ -1079,7 +1079,7 @@ function appendGetParam($arr_del_key = array(), $flg = false){
     }
     // 末尾の & を取り除く
     $str = mb_substr($str, 0, -1, "UTF-8");
-    debug('★appendGetParam:'.$str);
+    debug('appendGetParam:'.$str);
     return $str;
   }
 }

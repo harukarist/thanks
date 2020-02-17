@@ -54,7 +54,7 @@ if(!empty($_POST)){
   $card_id = $_POST['card_id'];
   $msg = $_POST['msg']; 
   $temp_pic = $_POST['temp_pic'];
-  debug('★$temp_pic：'.$temp_pic);
+  debug('$temp_pic：'.$temp_pic);
 
   //POST画像があればアップロードし、パスを格納
   if(!empty($_FILES['pic']['name']) ) {
@@ -65,7 +65,7 @@ if(!empty($_POST)){
     // POST画像がなくDBに登録がある場合はDBのパスを格納
     $pic = ( empty($pic) && !empty($dbFormData['pic']) ) ? $dbFormData['pic'] : $pic;
   }
-  debug('★$pic：'.$pic);
+  debug('$pic：'.$pic);
 
   // バリデーションチェック
   // 新規登録時

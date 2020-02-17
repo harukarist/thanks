@@ -47,7 +47,7 @@ if(!empty($_POST)){
           $_SESSION['msg_success'] = SUC03;
           //function.phpのmakeRandKey関数で認証キー生成
           $auth_key = makeRandKey();
-          debug('★authキー'.$auth_key);
+          debug('authキー'.$auth_key);
           
           //メールを送信
           $from = 'xxx@gmail.com';

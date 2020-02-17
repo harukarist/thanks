@@ -14,7 +14,7 @@ require('auth.php');
 //================================
 // GETパラメータを取得
 //----------------------------------
-debug('★GETパラメータ：'.print_r($_GET,true));
+debug('GETパラメータ：'.print_r($_GET,true));
 // カレントページのGETパラメータを取得(pagination()で付与)
 $currentPageNum = (!empty($_GET['p'])) ? $_GET['p'] : 1; //デフォルトは1ページ目
 // GETパラメータを取得
@@ -37,7 +37,7 @@ $currentMinNum = (($currentPageNum-1)*$listSpan);
 $dbMessages = getMessageList($_SESSION['user_id'], $listSpan, $currentMinNum, $category, $is_asc, $is_fav);
 
 // debug('現在のページ：'.$currentPageNum);
-debug('★$dbMessages：'.print_r($dbMessages,true));
+debug('$dbMessages：'.print_r($dbMessages,true));
 
 debug(basename($_SERVER['PHP_SELF']).'画面表示処理終了 <<<<<<<<<<');
 ?>

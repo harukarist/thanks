@@ -1,7 +1,7 @@
 <?php
 // DBからユーザーデータを取得
 $dbUsersData = getUsersData($_SESSION['user_id']);
-debug('★$dbUsersData：'.print_r($dbUsersData,true));
+debug('$dbUsersData：'.print_r($dbUsersData,true));
 
 // DBからメッセージ数を取得
 $amount = getAmount($_SESSION['user_id']);

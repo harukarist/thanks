@@ -29,7 +29,7 @@ if(!empty($_POST)){
   $group = $_POST['group_id'];
   $comment = $_POST['comment'];
   $temp_pic = $_POST['temp_pic'];
-  debug('★$temp_pic：'.$temp_pic);
+  debug('$temp_pic：'.$temp_pic);
 
   // 画像削除チェックがあればパスを削除
   if(!empty($_POST['pic_delete'])){
@@ -45,7 +45,7 @@ if(!empty($_POST)){
       $pic = ( empty($pic) && !empty($dbFormData['pic']) ) ? $dbFormData['pic'] : $pic;
     }
   }
-  debug('★$pic：'.$pic);
+  debug('$pic：'.$pic);
   //DBの情報と入力情報が異なる場合はバリデーション
   if($dbFormData['username'] !== $username){
     //未入力チェック

@@ -22,7 +22,7 @@ $dbUsersData = (!empty($partner_id)) ? getUsersData($partner_id) : '';
 // DBからメッセージ数を取得
 $amount = (!empty($partner_id)) ? getAmount($partner_id): '';
 // デバッグ出力
-debug('★$dbUsersData：'.print_r($dbUsersData,true));
+debug('$dbUsersData：'.print_r($dbUsersData,true));
 
 // パラメータ改ざんチェック
 //================================
@@ -44,7 +44,7 @@ if($partner_id !== $_SESSION['user_id']){
   $currentMinNum = (($currentPageNum-1)*$listSpan);
   // DBからメッセージデータを取得
   $dbMessages = getConversations($_SESSION['user_id'], $partner_id, $listSpan, $currentMinNum, $is_asc, $is_fav);
-  debug('★$dbMessages：'.print_r($dbMessages,true));
+  debug('$dbMessages：'.print_r($dbMessages,true));
 }else{
   $dbMessages = '';
 }

@@ -44,7 +44,7 @@ if(!empty($_POST)){
        debug('認証OK。');
        
        $pass = makeRandKey(); //パスワード生成
-       debug('★パスワード'.$pass);
+       debug('パスワード'.$pass);
        
        //例外処理
        try {

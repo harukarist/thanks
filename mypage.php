@@ -14,7 +14,7 @@ $currentMinNum = 0;
 $category = 'RECEIVED';
 // DBからメッセージデータを取得
 $dbReceived = getMessageList($_SESSION['user_id'], $listSpan, $currentMinNum, $category);
-debug('★$dbReceived：'.print_r($dbReceived,true));
+debug('$dbReceived：'.print_r($dbReceived,true));
 
 // 送信カードデータ取得
 //================================
@@ -24,7 +24,7 @@ $category = 'SENT';
 // DBからメッセージデータを取得
 $dbSent = getMessageList($_SESSION['user_id'], $listSpan, $currentMinNum, $category);
 
-debug('★$dbSent：'.print_r($dbSent,true));
+debug('$dbSent：'.print_r($dbSent,true));
 
 debug(basename($_SERVER['PHP_SELF']).'画面表示処理終了 <<<<<<<<<<');
 ?>
