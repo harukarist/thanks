@@ -119,30 +119,29 @@ require('head.php');
           <div class="c-form__area-msg">
             <?php echo getErrMsg('common'); ?>
           </div>
-          <label class="<?php if (!empty($err_msg['pass_old'])) echo 'is-error'; ?>">
+          <label class="js-form-label<?php if (!empty($err_msg['pass_old'])) echo ' is-error'; ?>">
             <div class="c-form__item-title">古いパスワード<span class="c-label__required">必須</span></div>
-            <input type="password" name="pass_old" value="<?php if (!empty($_POST['pass_old'])) echo $_POST['pass_old']; ?>">
-
+            <input type="password" name="pass_old" id="js-valid-password-old" class="js-required" value="<?php if (!empty($_POST['pass_old'])) echo $_POST['pass_old']; ?>">
+            <div class="c-form__area-msg js-area-msg">
+              <?php echo getErrMsg('pass_old'); ?>
+            </div>
           </label>
-          <div class="c-form__area-msg">
-            <?php echo getErrMsg('pass_old'); ?>
-          </div>
-          <label class="<?php if (!empty($err_msg['pass_new'])) echo 'is-error'; ?>">
+          <label class="js-form-label<?php if (!empty($err_msg['pass_new'])) echo ' is-error'; ?>">
             <div class="c-form__item-title">新しいパスワード<span class="c-label__required">必須</span><span class="c-form__notice">※英数字6文字以上</span></div>
-            <input type="password" name="pass_new" value="<?php if (!empty($_POST['pass_new'])) echo $_POST['pass_new']; ?>">
+            <input type="password" name="pass_new" id="js-valid-password" class="js-required" value="<?php if (!empty($_POST['pass_new'])) echo $_POST['pass_new']; ?>">
+            <div class="c-form__area-msg js-area-msg">
+              <?php echo getErrMsg('pass_new'); ?>
+            </div>
           </label>
-          <div class="c-form__area-msg">
-            <?php echo getErrMsg('pass_new'); ?>
-          </div>
-          <label class="<?php if (!empty($err_msg['pass_new_re'])) echo 'is-error'; ?>">
+          <label class="js-form-label<?php if (!empty($err_msg['pass_new_re'])) echo ' is-error'; ?>">
             <div class="c-form__item-title">新しいパスワード（再入力）<span class="c-label__required">必須</span><span class="c-form__notice">※英数字6文字以上</span></div>
-            <input type="password" name="pass_new_re" value="<?php if (!empty($_POST['pass_new_re'])) echo $_POST['pass_new_re']; ?>">
+            <input type="password" name="pass_new_re" id="js-valid-password-re" value="<?php if (!empty($_POST['pass_new_re'])) echo $_POST['pass_new_re']; ?>">
+            <div class="c-form__area-msg js-area-msg">
+              <?php echo getErrMsg('pass_new_re'); ?>
+            </div>
           </label>
-          <div class="c-form__area-msg">
-            <?php echo getErrMsg('pass_new_re'); ?>
-          </div>
           <div class="c-form__btn-container">
-            <input type="submit" class="c-btn c-btn--large c-btn--colored" value="変更する">
+            <input type="submit" class="c-btn c-btn--large c-btn--colored js-disabled-btn" value="変更する">
           </div>
         </form>
       </section>

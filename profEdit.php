@@ -133,7 +133,7 @@ require('head.php');
 
           <div class="c-form__item-title">お名前<span class="c-label__required">必須</span></div>
           <label class="js-form-label<?php if (!empty($err_msg['username'])) echo ' is-error'; ?>">
-            <input type="text" name="username" id="js-valid-name" class="js-required" value="<?php echo getFormData('username'); ?>">
+            <input type="text" name="username" id="js-valid-name" value="<?php echo getFormData('username'); ?>">
             <div class="c-form__area-msg js-area-msg">
               <?php echo getErrMsg('username'); ?>
             </div>
@@ -141,7 +141,7 @@ require('head.php');
 
           <div class="c-form__item-title">Email<span class="c-label__required">必須</span></div>
           <label class="js-form-label<?php if (!empty($err_msg['email'])) echo ' is-error'; ?>">
-            <input type="text" name="email" id="js-valid-email" class="js-required" value="<?php echo getFormData('email'); ?>">
+            <input type="text" name="email" id="js-valid-email" value="<?php echo getFormData('email'); ?>">
             <div class="c-form__area-msg js-area-msg">
               <?php echo getErrMsg('email'); ?>
             </div>
@@ -195,7 +195,7 @@ require('head.php');
           </label>
 
           <div class="c-form__btn-container">
-            <input type="submit" class="c-btn c-btn--large c-btn--colored js-disabled-btn" value="変更する">
+            <input type="submit" class="c-btn c-btn--large c-btn--colored" value="変更する">
           </div>
         </form>
       </section>

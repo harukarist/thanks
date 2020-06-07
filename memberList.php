@@ -43,7 +43,7 @@ require('head.php');
     <section>
       <form class="c-form p-member-list__group-select" method="get">
         <h3>部署名で検索</h3>
-        <select name="group_id" id="" class="js-required">
+        <select name="group_id" id="" class="js-required-select">
           <option value="" <?php if (getFormData('group_id', true) === '0') echo 'selected'; ?>>選択してください</option>
           <?php
           if (!empty($dbGroups)) foreach ($dbGroups as $key => $val) :

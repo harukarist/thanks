@@ -199,11 +199,44 @@ $(function () {
     }
   });
 
+  // 古いパスワード文字数チェック
+  $("#js-valid-password-old").change(function () {
+    var $this = $(this);
+    var minLength = 6;
+    var $label = $this.closest('.js-form-label');
+    var $msgArea = $label.find('.js-area-msg');
+
+    if ($this.val().length < minLength) {
+      $label.addClass('is-error');
+      $msgArea.text(MSG_PASS_MIN);
+    } else {
+      $label.removeClass('is-error');
+      $msgArea.text('');
+    }
+  });
+
   //-------------------------------------------------
   // フォームの必須項目が入力されたらボタンを活性
   $disabledBtn = $('.js-disabled-btn');
   $disabledBtn.prop("disabled", true);
-  $('.js-required').change(function () {
+  $('.js-required').keyup(function () {
+    var isFilled = true;
+    //必須項目をひとつずつチェック
+    $('.js-required').each(function (e) {
+      var $this = $('.js-required');
+      if ($this.eq(e).val() === "" || $this.closest('.js-form-label').hasClass('is-error')) {
+        isFilled = false;
+      }
+    });
+    //全て埋まっていた場合、送信ボタンを復活
+    if (isFilled) {
+      $disabledBtn.prop("disabled", false);
+    }
+    else {
+      $disabledBtn.prop("disabled", true);
+    }
+  });
+  $('.js-required-select').change(function () {
     var isFilled = true;
     //必須項目をひとつずつチェック
     $('.js-required').each(function (e) {
