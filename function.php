@@ -994,7 +994,12 @@ function uploadImg($file, $key)
 
       // sha1_file()でファイルデータからSHA-1ハッシュを取り、ランダムなファイル名を生成
       // image_type_to_extension($type)でファイルの拡張子を取得して連結
-      $path = 'uploads/' . sha1_file($file['tmp_name']) . image_type_to_extension($type);
+      if ($key === 'card_pic') {
+        // カードテンプレート画像の場合はディレクトリを変更
+        $path = 'templetes/' . sha1_file($file['tmp_name']) . image_type_to_extension($type);
+      } else {
+        $path = 'uploads/' . sha1_file($file['tmp_name']) . image_type_to_extension($type);
+      }
 
       //move_uploaded_file()でファイルをアップロード
       if (!move_uploaded_file($file['tmp_name'], $path)) {
