@@ -91,11 +91,11 @@ require('head.php');
         <label class="c-area-drop c-area-drop--large js-drop-area <?php if (!empty($err_msg['card_pic'])) echo 'is-error'; ?>">
           <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
           <input type="hidden" name="temp_pic" value="<?php echo sanitize(getFormData('pic')); ?>">
-          <input type="file" name="card_pic" class="c-input-file js-file-input js-required">
+          <input type="file" name="card_pic" class="c-input-file js-file-input">
           <img src="<?php echo sanitize(getFormData('pic')); ?>" alt="画像の登録" class="c-prev-img js-prev-img <?php if (empty(getFormData('pic'))) echo ' u-display-none' ?>">
         </label>
         <div class="c-form__btn-container">
-          <input type="submit" class="c-btn c-btn-large c-btn--colored js-disabled-btn" disabled="disabled" value="登録する">
+          <input type="submit" class="c-btn c-btn-large c-btn--colored" value="登録する">
         </div>
       </form>
     </section>
