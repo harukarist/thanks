@@ -8,5 +8,5 @@ debug('ログアウトします。');
 session_destroy();
 debug('ログインページへ遷移');
 // ログインページへ
-header("Location:login.php");
+header("Location:index.php");
 exit();

@@ -1,23 +1,27 @@
 <?php
-  //共通ファイル読込み・デバッグスタート
-  require('function.php');
-  debugLogStart();
+//共通ファイル読込み・デバッグスタート
+require('function.php');
+debugLogStart();
 
 //ログイン認証
 require('auth.php');
 
-//================================
+//-------------------------------------------------
 // 画面処理
-//================================
+//-------------------------------------------------
 // DBからユーザーデータを取得
 $dbFormData = getUsersPass($_SESSION['user_id']);
-debug('$dbFormData：'.print_r($dbFormData,true));
+debug('$dbFormData：' . print_r($dbFormData, true));
 
 //post送信されていた場合
-if(!empty($_POST)){
+// ゲストユーザーの場合は変更不可
+if (!empty($_POST) && $_SESSION['user_id'] === '6') {
+  $err_msg['common'] = MSG17;
+  // ゲストユーザー以外の場合は続行
+} elseif (!empty($_POST) && $_SESSION['user_id'] !== '6') {
   debug('POST送信あり');
-  debug('$_POST：'.print_r($_POST,true));
-  
+  debug('$_POST：' . print_r($_POST, true));
+
   //変数にユーザー情報を代入
   $pass_old = $_POST['pass_old'];
   $pass_new = $_POST['pass_new'];
@@ -28,27 +32,28 @@ if(!empty($_POST)){
   validRequired($pass_new, 'pass_new');
   validRequired($pass_new_re, 'pass_new_re');
 
-  if(empty($err_msg)){
+  if (empty($err_msg)) {
     debug('パスワード変更 未入力チェックOK。');
-    
+
     //古いパスワードの形式チェック
     validPass($pass_old, 'pass_old');
     //新しいパスワードの形式チェック
     validPass($pass_new, 'pass_new');
-    
+    debug('$pass_old:' . $pass_old);
+    debug('$dbFormData:' . $dbFormData['pass']);
     //古いパスワードとDBパスワードを照合
-    if(!password_verify($pass_old, $dbFormData['pass'])){
+    if (!password_verify($pass_old, $dbFormData['pass'])) {
       $err_msg['pass_old'] = MSG10;
     }
-    
+
     //新しいパスワードと古いパスワードが同じかチェック
-    if($pass_old === $pass_new){
+    if ($pass_old === $pass_new) {
       $err_msg['pass_new'] = MSG11;
     }
     //パスワードとパスワード再入力が合っているかチェック
     validMatch($pass_new, $pass_new_re, 'pass_new_re');
-    
-    if(empty($err_msg)){
+
+    if (empty($err_msg)) {
       debug('パスワード変更 バリデーションOK。');
 
       //例外処理
@@ -63,32 +68,31 @@ if(!empty($_POST)){
         $stmt = queryPost($dbh, $sql, $data);
 
         // クエリ成功の場合
-        if($stmt){
+        if ($stmt) {
           // javascriptで成功メッセージを表示
           $_SESSION['msg_success'] = SUC01;
-          
+
           //メールを送信
-          $username = ($dbFormData['username']) ? $dbFormData['username'] : 'お名前未登録';
-          $from = 'xxx@gmail.com';
+          $username = ($dbFormData['username']) ? $dbFormData['username'] : '名無し';
+          $from = 'harukarist@gmail.com';
           $to = $dbFormData['email'];
           $subject = 'パスワード変更通知｜Thanks!';
           $comment = <<<EOT
 {$username}　さん
 パスワードが変更されました。
                       
------------------------------------
+////////////////////////////////////////
 Thanks! サポートセンター
-URL  http://xxxxx.xxx/
-E-mail info@xxxxx.xxx
------------------------------------
+URL  http://xxxx.xxx/
+E-mail info@xxxx.com
+////////////////////////////////////////
 EOT;
           // function.phpのsendMail関数でメール送信
           sendMail($from, $to, $subject, $comment);
-          
+
           header("Location:mypage.php"); //マイページへ
           exit();
         }
-
       } catch (Exception $e) {
         error_log('エラー発生:' . $e->getMessage());
         $err_msg['common'] = MSG07;
@@ -99,59 +103,59 @@ EOT;
 ?>
 <?php
 $siteTitle = 'パスワード変更';
-require('head.php'); 
+require('head.php');
 ?>
+
 <body>
   <!-- ヘッダー -->
   <?php
-    require('header.php'); 
+  require('header.php');
   ?>
+  <div class="l-wrapper u-clearfix">
+    <main id="main" class="l-main--two-column">
+      <h1 class="c-title__top">パスワード変更</h1>
+      <section class="c-form-container">
+        <form action="" method="post" class="c-form c-form--thin">
+          <div class="c-form__area-msg">
+            <?php echo getErrMsg('common'); ?>
+          </div>
+          <label class="<?php if (!empty($err_msg['pass_old'])) echo 'is-error'; ?>">
+            <div class="c-form__item-title">古いパスワード<span class="c-label__required">必須</span></div>
+            <input type="password" name="pass_old" value="<?php if (!empty($_POST['pass_old'])) echo $_POST['pass_old']; ?>">
 
-  <div id="contents">
-    <main class="main page-2column">
-      <h1 class="page-title">パスワード変更</h1>
-        <div class="form-container">
-          <form action="" method="post" class="form">
-            <div class="area-msg">
-              <?php echo getErrMsg('common'); ?>
-            </div>
-              <label class="<?php if(!empty($err_msg['pass_old'])) echo 'err'; ?>">
-                古いパスワード
-                <input type="password" name="pass_old" value="<?php if(!empty($_POST['pass_old'])) echo $_POST['pass_old'];?>">
-                
-              </label>
-              <div class="area-msg">
-              <?php echo getErrMsg('pass_old'); ?>
-            </div>
-              <label class="<?php if(!empty($err_msg['pass_new'])) echo 'err'; ?>">
-                新しいパスワード<span class="notice">※英数字6文字以上</span>
-                <input type="password" name="pass_new" value="<?php if(!empty($_POST['pass_new'])) echo $_POST['pass_new'];?>">
-              </label>
-              <div class="area-msg">
-              <?php echo getErrMsg('pass_new'); ?>
-            </div>
-              <label class="<?php if(!empty($err_msg['pass_new_re'])) echo 'err'; ?>">
-                新しいパスワード（再入力）<span class="notice">※英数字6文字以上</span>
-                <input type="password" name="pass_new_re" value="<?php if(!empty($_POST['pass_new_re'])) echo $_POST['pass_new_re'];?>">
-              </label>
-              <div class="area-msg">
-              <?php echo getErrMsg('pass_new_re'); ?>
-            </div>
-              <div class="btn-container">
-                <input type="submit" class="btn-colored" value="変更する">
-              </div>
-            </form>
-        </div>
+          </label>
+          <div class="c-form__area-msg">
+            <?php echo getErrMsg('pass_old'); ?>
+          </div>
+          <label class="<?php if (!empty($err_msg['pass_new'])) echo 'is-error'; ?>">
+            <div class="c-form__item-title">新しいパスワード<span class="c-label__required">必須</span><span class="c-form__notice">※英数字6文字以上</span></div>
+            <input type="password" name="pass_new" value="<?php if (!empty($_POST['pass_new'])) echo $_POST['pass_new']; ?>">
+          </label>
+          <div class="c-form__area-msg">
+            <?php echo getErrMsg('pass_new'); ?>
+          </div>
+          <label class="<?php if (!empty($err_msg['pass_new_re'])) echo 'is-error'; ?>">
+            <div class="c-form__item-title">新しいパスワード（再入力）<span class="c-label__required">必須</span><span class="c-form__notice">※英数字6文字以上</span></div>
+            <input type="password" name="pass_new_re" value="<?php if (!empty($_POST['pass_new_re'])) echo $_POST['pass_new_re']; ?>">
+          </label>
+          <div class="c-form__area-msg">
+            <?php echo getErrMsg('pass_new_re'); ?>
+          </div>
+          <div class="c-form__btn-container">
+            <input type="submit" class="c-btn c-btn--large c-btn--colored" value="変更する">
+          </div>
+        </form>
+      </section>
     </main>
 
     <!-- サイドバー -->
     <?php
-      require('sidebar.php');
+    require('sidebar.php');
     ?>
 
   </div>
 
-<!-- フッター -->
-<?php
-require('footer.php'); 
-?>
+  <!-- フッター -->
+  <?php
+  require('footer.php');
+  ?>
