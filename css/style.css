@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 html, body,
 ul, ol, li,
@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6, p, div, img {
 
 body {
   /* font-family: 'M PLUS Rounded 1c', sans-serif; */
-  font-family: 'M PLUS 1p','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  font-family: 'Noto Sans JP','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
   color: #444;
   font-size: 16px;
   letter-spacing: 0.05em;
