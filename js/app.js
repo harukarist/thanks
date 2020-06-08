@@ -64,13 +64,11 @@ $(function () {
       // ファイルを読み込むFileReaderオブジェクトを作り、変数に入れる
       fileReader = new FileReader();
 
-    // 読み込みが完了した際のイベントハンドラ。
+    // 読み込みが完了した際のイベントハンドラ
     fileReader.onload = function (event) {
-      // this.setState({ file: reader.result });
-
       // attrでimgタグのsrc属性に読み込んだ画像データを設定
       // 画像データは引数eventに入っている。event.target.resultで取得。
-      // show()で非表示を表示に変更。
+      // show()で非表示を表示に変更
       $img.attr('src', event.target.result).show();
     };
 
@@ -78,15 +76,15 @@ $(function () {
     // fileReaderオブジェクトのreadAsDataURLメソッドで画像をDataURLに変換
     // 画像自体を文字列に変換してimgタグのsrc属性に入れることで表示する
     fileReader.readAsDataURL(file);
-    // fileReader.readAsDataURL(event.target.files[0]);
   });
+
   //-------------------------------------------------
   //フォームバリデーション
-  const MSG_TEXT_MAX = '25文字以内で入力してください。';
-  const MSG_EMPTY = '入力必須です。';
-  const MSG_EMAIL_TYPE = 'Emailの形式ではありません。'
-  const MSG_TEXTAREA_MAX = '140文字以内で入力してください。'
-  const MSG_PASS_MIN = '6文字以上で入力してください。';
+  const MSG_TEXTAREA_MAX = '140文字以内で入力してください'
+  const MSG_EMPTY = '入力必須です';
+  const MSG_TEXT_MAX = '25文字以内で入力してください';
+  const MSG_EMAIL_TYPE = 'Emailの形式ではありません'
+  const MSG_PASS_MIN = '6文字以上で入力してください';
   const MSG_PASS_RETYPE = 'パスワードが一致しません';
 
   // メッセージチェック
@@ -255,32 +253,28 @@ $(function () {
   });
   //-------------------------------------------------
   // お気に入り登録・削除
-  var $fav,
-    favMessageId;
+  var $fav, favMessageId;
   // お気に入りアイコンのDOMを取得（DOMが取得できない場合はnullを初期値とする）
   $fav = $('.js-click-fav');
 
   // お気に入りアイコンがクリックされた時のイベントをセット
   $fav.on('click', function () {
+    // data属性のメッセージIDを取得
     favMessageId = $(this).data('messageid');
-    console.log(favMessageId);
-    // 商品IDが取得できた場合（undefinedでない、かつnullでない場合。0はtrueとする）
-    if (favMessageId !== undefined && favMessageId !== null) {
 
-      // 自分自身（アイコン）のDOMを変数に代入
+    // IDが取得できた場合（undefinedでない、かつnullでない場合）
+    if (favMessageId !== undefined && favMessageId !== null) {
       var $this = $(this);
       // ajaxLike.phpでAjax通信を行う
       $.ajax({
         type: "POST",
         url: "ajaxLike.php",
         data: {
+          //key(messageId),value(メッセージID)を渡す
           messageId: favMessageId
-        } //key(messageId),value(商品ID)を渡す
+        }
       }).done(function (data) {
-        // Ajax通信が成功した場合
-        // ※console.logはユーザーに見えてしまうため通常は使用しない
-        console.log('Ajax Success');
-        // アイコンDOMのクラス属性をtoggleClass()でつけ外しする
+        // Ajax通信が成功したらactiveクラスを付け外しする
         $this.toggleClass('active');
       }).fail(function (msg) {
         // Ajax通信が失敗した場合（相手先が見当たらない、サーバーダウン、コード誤り等）
