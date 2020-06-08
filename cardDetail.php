@@ -50,17 +50,12 @@ require('head.php');
       </div>
       <div class="p-card-detail__icon">
         <a href="#" onclick="window.history.back(); return false;"><i class="fas fa-chevron-left c-icon-back"></i>戻る</a>
-        <?php if ($dbMsgData['from_user'] === $_SESSION['user_id']) : ?>
+        <?php if ($dbMsgData['from_user'] === $_SESSION['user_id']) { ?>
           <a href="cardCreate.php?m_id=<?php echo sanitize($dbMsgData['id']); ?>"><i class="fas fa-edit c-icon c-icon-reply"></i></a>
-        <?php elseif ($dbMsgData['to_user'] === $_SESSION['user_id']) : ?>
+        <?php } elseif ($dbMsgData['to_user'] === $_SESSION['user_id']) { ?>
           <a href="cardCreate.php?tu_id=<?php echo sanitize($dbMsgData['from_user']); ?>"><i class="fas fa-reply c-icon c-icon-reply"></i></a>
-        <?php endif ?>
+        <?php } ?>
         <i class="fab fa-gratipay c-icon c-icon-fav js-click-fav <?php if (isFavorite($_SESSION['user_id'], $dbMsgData['id'])) echo 'active'; ?>" aria-hidden="true" data-messageid="<?php echo sanitize($dbMsgData['id']); ?>"></i>
       </div>
     </section>
   </main>
-
-  <!-- フッター -->
-  <?php
-  require('footer.php');
-  ?>
