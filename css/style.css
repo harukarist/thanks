@@ -49,6 +49,7 @@ input, textarea, select, button {
 }
 input[type="text"], input[type="password"], input[type="email"], input[type="number"], select, textarea {
   margin-bottom: 5px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
   width: 100%;
@@ -106,6 +107,7 @@ input[type="submit"]:hover {
 
 .c-table {
   background: rgba(255,255,255,.5);
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .c-table th {
@@ -133,7 +135,13 @@ input[type="submit"]:hover {
   z-index: 3;
   display: none;
 }
-
+@media screen and (max-width: 480px) {
+  .c-msg-slide {
+    height: auto;
+    line-height: unset;
+    background: rgb(243, 222, 179);
+  }
+}
 /* 検索エリア */
 .c-search-result {
   margin: 0px auto 30px;
@@ -146,6 +154,7 @@ input[type="submit"]:hover {
   padding: 5px 10px;
   height: 30px;
   max-width: 800px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: 30px;
 }
@@ -331,8 +340,12 @@ input[type="submit"]:hover {
   /* overflow: hidden; */
 }
 .header-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
@@ -359,7 +372,9 @@ input[type="submit"]:hover {
 /* ハンバーガーアイコン */
 .header-trigger {
   display: none;
+  -webkit-transition: all .4s;
   transition: all .4s;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
   top: 10px;
@@ -373,7 +388,9 @@ input[type="submit"]:hover {
       display: block; } }
   .header-trigger--line {
     display: inline-block;
+    -webkit-transition: all .4s;
     transition: all .4s;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: absolute;
     width: 100%;
@@ -387,6 +404,7 @@ input[type="submit"]:hover {
     .header-trigger--line:nth-of-type(3) {
       top: 24px; }
   .header-trigger--text {
+    -webkit-transition: all .4s;
     transition: all .4s;
     font-size: 12px;
     color: #fff;
@@ -423,6 +441,7 @@ input[type="submit"]:hover {
     height: 100vh;
     /* 閉じるボタン分の高さ */
     padding-top: 50px;
+    -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
   }
   /* ハンバーガーアイコン押下時、右端にあったメニューが100％左に移動 */
@@ -449,6 +468,7 @@ input[type="submit"]:hover {
 }
 #header-nav a:hover {
   background-color: rgba(255, 247, 228,.3);
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 #header-nav .fas {
@@ -519,6 +539,7 @@ input[type="submit"]:hover {
 #main {
   overflow: hidden;
   text-align: center;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
@@ -527,6 +548,7 @@ input[type="submit"]:hover {
 #main-header0 {
   overflow: hidden;
   text-align: center;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   margin: 0 auto;
@@ -544,6 +566,7 @@ input[type="submit"]:hover {
   margin: 0 auto;
 }
 .l-main--two-column {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: calc(100% - 200px);
   padding: 10px 20px;
@@ -563,6 +586,7 @@ input[type="submit"]:hover {
 }
 /* サイドバー */
 .l-sidebar {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
   padding-top: 60px; /* ヘッダー高さ分を空ける */
@@ -613,6 +637,7 @@ input[type="submit"]:hover {
   letter-spacing: 0.1em;
   cursor: pointer;
   -webkit-appearance: none;
+  -webkit-transition: .2s;
   transition: .2s;
 }
 
@@ -674,6 +699,7 @@ input[type="submit"]:hover {
   margin: 0 auto;
   padding: 5px 10px;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: left;
   border: 1px solid rgba(134, 81, 57, .3);
@@ -690,6 +716,7 @@ input[type="submit"]:hover {
     max-width: 100vw;
     min-width: 300px;
     padding: 15px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
 }
@@ -747,6 +774,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .c-prev-img {
   width:100%;
   height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   position:absolute;
   top:0;
@@ -756,6 +784,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 /* 画像ドラッグ＆ドロップエリア */
 .c-area-drop {
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   position: relative;
 }
@@ -772,6 +801,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .c-area-drop--large::after {
   position: absolute;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 .c-area-drop__panel {
@@ -783,6 +813,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   color: #ccc;
   position: absolute;
   top: 30%;
+  -webkit-transform: translateX(5%);
   transform: translateX(5%);
 }
 @media screen and (max-width: 480px) {
@@ -814,15 +845,27 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-hero {
   width: 100vw;
   min-height: 100vh;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   text-align:center;
   position: relative;
   background-size: cover;
   background-position: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(215, 197, 156, .4)), to(rgba(215, 197, 156, .6))), url(../img/hero.jpg);
+  background-image: -webkit-linear-gradient(rgba(215, 197, 156, .4), rgba(215, 197, 156, .6)), url(../img/hero.jpg);
   background-image: linear-gradient(rgba(215, 197, 156, .4), rgba(215, 197, 156, .6)), url(../img/hero.jpg);
 }
 .p-hero__heading {
@@ -866,21 +909,31 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-card-panel {
   display: flex;
   /* 横方向のflex */
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
   align-items: stretch;
   margin: 15px 0;
   text-align: center;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
 .p-card-panel__card-item {
   display: flex;
   /* 縦方向のflex */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   margin: 0 20px 30px 0;
   padding: 0;
@@ -888,12 +941,12 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   width: calc((100% - 20px * 2) / 3);
   border-radius: 5px;
   background-color: #fff;
+  -webkit-box-shadow: 0 3px 6px #ccc;
   box-shadow: 0 3px 6px #ccc;
   overflow: hidden;
   text-align: left;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
@@ -930,12 +983,14 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 /* カードの要素 */
 .p-card-panel__card-link:hover {
   opacity: 0.6;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   text-decoration: none;
 }
 .p-card-panel__card-img {
   width: 100%;
   height: 200px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
   margin: 0;
@@ -990,10 +1045,10 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 }
 .p-card-list__menu-list {
   display: flex;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
@@ -1003,6 +1058,9 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 }
 @media screen and (max-width: 480px) {
   .p-card-list__menu-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
   }
   .p-card-list__menu-item {
@@ -1040,31 +1098,44 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   margin: 10px 0 0 0;
   width: 100%;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
   align-items: stretch;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
 .p-cardCreate__card-item {
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin: 0 10px 40px 0;
   padding: 0;
   /* 横の余白分を5列の幅から均等に引く */
   width: calc(100% / 5 - 10px * 4 / 5);
   border-radius: 5px;
+  -webkit-box-shadow: 0 3px 6px #ccc;
   box-shadow: 0 3px 6px #ccc;
   background: #fff;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
@@ -1100,10 +1171,12 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-cardCreate__card-img {
   width: 100%;
   height: 120px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px 5px 0 0;
   padding: 0 0 5px 0;
   margin-bottom: auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .p-cardCreate__radio-original {
@@ -1172,6 +1245,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   overflow: hidden;
   max-width: 500px;
   margin: 0 auto 40px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -1182,13 +1256,13 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-member-list__img {
   width: 80px;
   height: 80px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 50%;
   margin: 10px;
 }
 .p-member-list__detail {
   padding: 10px;
-}
 }
 .p-member-list__name {
   display: block;
@@ -1218,6 +1292,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   overflow: hidden;
   max-width: 500px;
   margin: 40px auto;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -1230,6 +1305,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-profile__img {
   width: 120px;
   height: 120px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -1284,11 +1360,13 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   padding: 0;
   /* position: relative; */
   display: flex;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
   align-items: stretch;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
@@ -1302,17 +1380,22 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   margin: 0;
 }
 .message-list .message .message-right {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
   width: 50%;
   margin: 0;
   padding: 0 20px;
   text-align: left;
   /* ベンダープレフィックス */
-  display: -webkit-box; /*Android*/
-  display: -moz-box;    /*Firefox*/
+  display: -webkit-box; /*Android*/    /*Firefox*/
   display: -ms-flexbox; /*IE*/
   display: -webkit-flex; /*PC-Safari,iOS8.4*/
 }
@@ -1348,6 +1431,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   padding-bottom: 10px;
   background-color: white;
   text-align: center;
+  -webkit-box-shadow: 0 3px 6px #ccc;
   box-shadow: 0 3px 6px #ccc;
 }
 .p-card-detail__img {
@@ -1378,6 +1462,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
   max-width: 640px;
   margin: 30px auto;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* background-color: #fff; */
   /* box-shadow: 0 3px 6px #ccc; */
@@ -1428,6 +1513,7 @@ label.is-error > input, label.is-error > select, label.is-error > textarea {
 .p-sidebar__avatar-img {
   width: 100px;
   height: 100px;
+  -o-object-fit: cover;
   object-fit: cover;
   border-radius: 50%;
 }
