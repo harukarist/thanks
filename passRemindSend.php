@@ -58,18 +58,18 @@ if (!empty($_POST)) {
 下記のURLにて認証キーをご入力頂くとパスワードが再発行されます。
 
 パスワード再発行認証キー入力ページ：
-hhttps://portfolio.harukarist.work/thanks/passRemindReceive.php
+https://harukarist.sakura.ne.jp/thanks/passRemindReceive.php
 
 認証キー：{$auth_key}
 ※認証キーの有効期限は30分となります
 
 認証キーが無効となった場合は
 再度下記ページより再発行をお願い致します。
-hhttps://portfolio.harukarist.work/thanks/passRemindSend.php
+https://harukarist.sakura.ne.jp/thanks/passRemindSend.php
 
 -----------------------------------------------
 Thanks! サポートセンター
-URL  https://portfolio.harukarist.work/thanks/
+URL  https://harukarist.sakura.ne.jp/thanks/
 E-mail harukarist@gmail.com
 -----------------------------------------------
 EOT;

@@ -72,12 +72,12 @@ if (!empty($_POST)) {
 ログインしてください。
 ログイン後、パスワードのご変更をお願い致します
 
-ログインページ：hhttps://portfolio.harukarist.work/thanks/login.php
+ログインページ：https://harukarist.sakura.ne.jp/thanks/login.php
 再発行パスワード：{$pass}
 
 -----------------------------------------------
 Thanks! サポートセンター
-URL  https://portfolio.harukarist.work/thanks/
+URL  https://harukarist.sakura.ne.jp/thanks/
 E-mail harukarist@gmail.com
 -----------------------------------------------
 EOT;

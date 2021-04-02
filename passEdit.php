@@ -73,7 +73,7 @@ if (!empty($_POST) && $_SESSION['user_id'] === '6') {
           $_SESSION['msg_success'] = SUC01;
 
           //メールを送信
-          $username = ($dbFormData['username']) ? $dbFormData['username'] : '名無し';
+          $username = ($dbFormData['username']) ? $dbFormData['username'] : '名称未設定';
           $from = 'harukarist@gmail.com';
           $to = $dbFormData['email'];
           $subject = 'パスワード変更通知｜Thanks!';
@@ -81,11 +81,11 @@ if (!empty($_POST) && $_SESSION['user_id'] === '6') {
 {$username}　さん
 パスワードが変更されました。
                       
-////////////////////////////////////////
+-----------------------------------------------
 Thanks! サポートセンター
-URL  http://xxxx.xxx/
-E-mail info@xxxx.com
-////////////////////////////////////////
+URL  https://harukarist.sakura.ne.jp/thanks/
+E-mail harukarist@gmail.com
+-----------------------------------------------
 EOT;
           // function.phpのsendMail関数でメール送信
           sendMail($from, $to, $subject, $comment);
