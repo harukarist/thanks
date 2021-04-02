@@ -264,7 +264,7 @@ $(function () {
   $fav.on('click', function () {
     favMessageId = $(this).data('messageid');
     console.log(favMessageId);
-    // 商品IDが取得できた場合（undefinedでない、かつnullでない場合。0はtrueとする）
+    // IDが取得できた場合（undefinedでない、かつnullでない場合。0はtrueとする）
     if (favMessageId !== undefined && favMessageId !== null) {
 
       // 自分自身（アイコン）のDOMを変数に代入
@@ -275,7 +275,7 @@ $(function () {
         url: "ajaxLike.php",
         data: {
           messageId: favMessageId
-        } //key(messageId),value(商品ID)を渡す
+        } //key(messageId),value(ID)を渡す
       }).done(function (data) {
         // Ajax通信が成功した場合
         // ※console.logはユーザーに見えてしまうため通常は使用しない
