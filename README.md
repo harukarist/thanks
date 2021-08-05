@@ -4,6 +4,8 @@
 
 メンバー同士で気軽に感謝を伝え合うことによる、コミュニケーション活性化やモチベーション向上を目指しています。
 
+サイトURL：https://harukarist.sakura.ne.jp/thanks/
+
 ## 使用言語など
 
 PHP/MySQL/jQuery/HTML/CSS
